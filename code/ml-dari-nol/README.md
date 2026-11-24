@@ -40,7 +40,7 @@ episode TikTok).
 
 | # | Judul kerja | Satu ide besar | Status |
 |---|---|---|---|
-| E01 | Otak Lu Baca Angka Ini dalam 0,1 Detik. Komputer? Butuh 13.000 Angka. | NN = fungsi raksasa 784 angka → 10 angka; "belajar" = mencari setting 13.000 weight+bias | Konsep + draft naskah |
+| E01 | Otak Lu Baca Angka Ini dalam 0,1 Detik. Komputer? Butuh 13.000 Angka. | NN = fungsi raksasa 784 angka → 10 angka; "belajar" = mencari setting 13.000 weight+bias | Film selesai, stills 8/8 lolos — menunggu VO |
 | E02 | Gimana Komputer Belajar? Dia Cuma Menggelinding | Gradient descent: cost = seberapa payah; belajar = menggelinding ke lembah | Belum |
 | E03 | Weight & Bias: 13.000 Knob yang Bisa Diputar | Weight = seberapa penting sambungan; bias = ambang aktif | Belum |
 | E04 | Sigmoid vs ReLU: Fungsi Penjepit | Aktivasi harus 0–1; kenapa sigmoid ditinggalkan | Belum |
@@ -57,8 +57,8 @@ Transformer), LLM.
    **Harus dibaca/disetujui Shendi dulu. TIDAK ADA generate sebelum cocok.**
 2. **Film code** (lemo-opuscar, style chalkboard) dibuat di folder episode
    yang sama (`./epXX-*/film/`), mengikuti layout proyek film lemo.
-   Engine lemo-opuscar tetap di checkout terpisah — proyek film di luar
-   library di-mount oleh tools lemo (`/@film/`).
+   Engine-nya ada di repo ini (`core/` di root) — render jalan dari root
+   repo dengan path relatif.
 3. **Stills gate:** 3–5 still kunci direview Shendi sebelum full render.
 4. **Render di lokal** (laptop Shendi, GPU aktif — jauh lebih cepat dari
    VM/Colab). Lihat `README.md` di folder episode.

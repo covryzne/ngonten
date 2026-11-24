@@ -1,9 +1,10 @@
 # E01 — Apa Itu Neural Network?
 
-> Status: NASKAH FINAL (menunggu dibaca Shendi). Style chalkboard LOCKED.
-> Berikutnya: Shendi generate VO di ElevenLabs (Rocky, v4) → film code
-> dibangun dengan timing VO asli. Konsep + naskah: `./concept.md`,
-> file siap-paste VO: `./script-elevenlabs.txt`.
+> Status: FILM SELESAI — 8/8 stills gate LOLOS (24 Nov 2026). Durasi
+> 98,46 dtk (estimasi timing VO). Berikutnya: Shendi generate VO di
+> ElevenLabs (Rocky, v4, dari `./script-elevenlabs.txt`) → kirim MP3 ke
+> Covryzne → timing asli + mix → Shendi render + mux lokal.
+> Konsep + naskah: `./concept.md`.
 
 ## Rencana
 
@@ -25,18 +26,24 @@ ep01-apa-itu-neural-network/
 
 ## Cara jalan di lokal (setelah film code ada)
 
+Semua perintah dari **root repo** (di mana pun lu clone — tidak ada path
+hardcode). Prasyarat (sekali aja): `npm install` di root repo, ffmpeg,
+Chrome.
+
 ```powershell
-# dari checkout lemo-opuscar
+# Chrome untuk render (sekali per jendela PowerShell)
 $env:PLAYWRIGHT_CHROME="C:\Program Files\Google\Chrome\Application\chrome.exe"
 
-# 1. Stills gate
-node core/render/still.mjs D:\ngonten\code\ml-dari-nol\ep01-apa-itu-neural-network\film 2 15 30 45 60 --q 'tilt=1&ss=1' --size 1080x1920 --out stills-ep01
+# 1. Stills gate (3-5 frame kunci, review dulu sebelum render penuh)
+node core/render/still.mjs code/ml-dari-nol/ep01-apa-itu-neural-network/film 2 15 30 45 60 --size 1080x1920 --out code/ml-dari-nol/ep01-apa-itu-neural-network/stills
 
-# 2. Full render
-node core/render/video.mjs D:\ngonten\code\ml-dari-nol\ep01-apa-itu-neural-network\film --fps 30 --workers 2 --q 'tilt=1&ss=1' --size 1080x1920 --out ep01-video-only.mp4
+# 2. Full render (video tanpa audio)
+node core/render/video.mjs code/ml-dari-nol/ep01-apa-itu-neural-network/film --fps 30 --workers 2 --size 1080x1920 --out code/ml-dari-nol/ep01-apa-itu-neural-network/out/ep01-video-only.mp4
 
-# 3. Mux (mix.wav disiapkan Muse)
-ffmpeg -i ep01-video-only.mp4 -i mix.wav -c:v copy -af loudnorm=I=-14:TP=-1:LRA=11 -c:a aac -b:a 192k -shortest ep01-final.mp4
+# 3. Mux dengan mix.wav (disiapkan Muse, extract audio pack di root repo)
+ffmpeg -i code/ml-dari-nol/ep01-apa-itu-neural-network/out/ep01-video-only.mp4 -i mix.wav -c:v copy -af loudnorm=I=-14:TP=-1:LRA=11 -c:a aac -b:a 192k -shortest code/ml-dari-nol/ep01-apa-itu-neural-network/out/ep01-final.mp4
 ```
 
-> Sesuaikan drive letter (`D:\ngonten\...`) dengan lokasi clone repo di PC lu.
+Render lokal adalah jalur utama (GPU laptop aktif, ±1,6 dtk/frame) —
+VM/Colab bukan pilihan untuk render film lemo (sudah dibuktikan: VM ±7 jam,
+Colab GPU tidak bisa dipakai Chrome).

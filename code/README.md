@@ -25,12 +25,17 @@ ini, series ini, code-nya di sini.
 
 ## Engine
 
-Engine-nya tetap di checkout terpisah (bukan di repo ini):
+Engine-nya ada DI DALAM repo ini (di-vendor, bukan checkout terpisah):
 
-- **lemo-opuscar** — proyek film di repo ini di-mount oleh tools lemo
-  (`/@film/`), jadi path film bisa di luar checkout lemo-opuscar.
+- **lemo-opuscar** — `core/` (render tools + lib) + `styles/` (style yang
+  dipakai) di root repo. JANGAN diedit. Semua perintah render jalan dari
+  root repo dengan path relatif, contoh:
+  `node core/render/video.mjs code/ml-dari-nol/ep01-apa-itu-neural-network/film ...`
 - **MotionMaxxing** — proyek self-contained, jalan dari repo ini.
 - **Blender (MCP)** — file `.blend` + script di folder episode.
+
+Satu `node_modules/` di root repo (`npm install` sekali), dipakai bareng
+semua film. Tidak ada tarball, tidak ada duplikasi.
 
 ## Aturan render
 

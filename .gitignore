@@ -11,3 +11,10 @@ venv/
 
 # Environment variables
 .env
+
+# Node modules (install sekali di root: npm install)
+node_modules/
+
+# Render outputs (regenerable, jangan masuk git)
+**/out/
+**/stills/

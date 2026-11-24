@@ -1,0 +1,1 @@
+{"dependencies":{"playwright-core":"^1.63.0","three":"^0.170.0"},"description":"Repo konten @covryzne.ai — engine lemo-opuscar (vendored di core/) + serial ML dan lainnya. Render lokal.","engines":{"node":">=20"},"name":"ngonten","private":true,"type":"module","version":"0.1.0"}
