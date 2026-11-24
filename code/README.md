@@ -8,16 +8,20 @@ satu subfolder per episode.
 ```
 code/
 └── <nama-serial>/                 # misal: ml-dari-nol
+    ├── README.md                  # premise serial + peta episode
+    ├── referensi-*.md             # analisis referensi serial ini (misal: 3B1B)
     └── <epXX-nama-episode>/       # misal: ep01-apa-itu-neural-network
         ├── README.md              # status episode + cara jalan lokal
+        ├── concept.md             # konsep + draft naskah episode
         ├── film/                  # proyek film (lemo-opuscar / MotionMaxxing)
         ├── vo/                    # file VO + timing
         ├── stills/                # stills gate (review sebelum full render)
         └── out/                   # hasil render + mux final
 ```
 
-Konsep + naskah TIDAK di sini — itu dokumen, tempatnya di `series/`.
-Folder ini khusus kode + aset render.
+Satu serial = satu folder, satu episode = satu subfolder — konsep,
+naskah, dan code tinggal bareng. Biar satu lirikan kelihatan: episode
+ini, series ini, code-nya di sini.
 
 ## Engine
 
