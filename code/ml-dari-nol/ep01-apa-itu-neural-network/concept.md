@@ -1,7 +1,7 @@
 # E01 — Otak Lu Baca Angka Ini dalam 0,1 Detik. Komputer? Butuh 13.000 Angka.
 
-> Status: KONSEP + DRAFT NASKAH — menunggu approval judul dari Shendi.
-> Judul alternatif ada di `../README.md`.
+> Status: NASKAH FINAL (menunggu dibaca Shendi) — generate VO setelah
+> wording di-approve. Judul alternatif ada di `../README.md`.
 
 ## Satu ide besar
 
@@ -28,24 +28,28 @@ yang benar untuk **13.000 angka** di dalamnya (weight + bias).
 - Running example: digit MNIST "3" — dipakai di semua beat.
 - VO: Rocky, monolog. Tanpa pitch shift / efek (Bible §6).
 
-## Draft naskah (15 baris, ±1.050 karakter, ±70 dtk)
+## Naskah final (15 baris, 1.379 karakter, ±89 dtk)
 
-> DRAFT — kata-kata final setelah judul di-approve. Tag ekspresi untuk
-> generate VO di website ElevenLabs (Rocky, v4).
+> Tag ekspresi untuk generate VO di website ElevenLabs (Rocky, v4,
+> stability 50 / similarity 75 — sama seperti Ep 1). Tanpa efek "Small Room"
+> (VO harus dry). File siap-paste: `script-elevenlabs.txt`.
+> Estimasi VO ±89 dtk (patokan pace Rocky di Ep 1) + end card ±3,5 dtk =
+> total ±92 dtk — di ujung atas format 60–90 dtk, wajar untuk episode
+> pembuka yang sifatnya overview.
 
 1. [curious] Ini angka 3. Corat-coret, resolusi cuma 28 kali 28 pixel — tapi otak lu langsung tahu ini 3.
-2. Padahal pixelnya beda-beda tiap tulisan. Mata lu nangkep pola yang beda, tapi otak lu tetap bilang: ini 3.
-3. Sekarang coba suruh komputer ngelakuin hal yang sama. Tulis program yang baca grid 28 kali 28 pixel, terus tebak angkanya berapa.
-4. Yang tadinya gampang banget, tiba-tiba jadi susah banget. Nah, di sinilah neural network masuk.
-5. Neural network itu bukan otak tiruan. Isinya cuma neuron — dan neuron itu cuma tempat nyimpen angka, dari nol sampai satu.
-6. Gambar 3 tadi punya 784 pixel. Jadi layer pertama network ini punya 784 neuron, satu buat tiap pixel.
-7. Layer terakhirnya cuma 10 neuron — satu buat tiap angka, nol sampai sembilan. Yang paling terang, itu tebakan network-nya.
-8. Di tengahnya ada hidden layer — dua layer, masing-masing 16 neuron. Di sinilah "pikirannya" terjadi.
-9. Cara kerjanya: angka di satu layer nentuin angka di layer berikutnya, lewat perkalian berbobot.
-10. Tiap sambungan antar neuron punya weight — angka yang bilang seberapa penting sambungan itu. Plus satu bias per neuron.
-11. Totalnya, network sekecil ini punya hampir 13.000 weight dan bias. 13.000 knob yang bisa diputar-putar.
-12. Dan "belajar" itu artinya: komputer mencari setting ke-13.000 knob itu sampai tebakannya benar.
-13. Caranya? Dia coba-coba, ukur salahnya, terus perbaiki sedikit-sedikit. Namanya gradient descent.
+2. Pixelnya beda-beda tiap tulisan, tapi otak lu tetap bilang: ini 3.
+3. Sekarang suruh komputer ngelakuin hal yang sama — baca grid 28 kali 28 pixel, tebak angkanya.
+4. Yang tadinya gampang, tiba-tiba jadi susah banget. Nah, di sinilah neural network masuk.
+5. Neural network itu bukan otak tiruan. Isinya cuma neuron — tempat nyimpen angka dari nol sampai satu.
+6. Gambar tadi punya 784 pixel — jadi layer pertamanya punya 784 neuron, satu buat tiap pixel.
+7. Layer terakhir cuma 10 neuron, satu buat tiap angka. Yang paling terang, itu tebakannya.
+8. Di tengahnya dua hidden layer, masing-masing 16 neuron. Di sinilah "pikirannya" terjadi.
+9. Cara kerjanya: angka di satu layer nentuin angka di layer berikutnya, lewat jumlah berbobot.
+10. Tiap sambungan punya weight — angka yang bilang seberapa penting sambungan itu. Plus satu bias per neuron.
+11. [excited] Totalnya, network sekecil ini punya hampir 13.000 weight dan bias. 13.000 knob yang bisa diputar-putar.
+12. "Belajar" artinya: komputer mencari setting ke-13.000 knob itu sampai tebakannya benar.
+13. Caranya? Coba-coba, ukur salahnya, perbaiki sedikit-sedikit. Namanya gradient descent.
 14. Jadi neural network itu bukan magic. Dia cuma fungsi — fungsi raksasa dengan 13.000 parameter.
 15. [whispers] Besok gua kasih tau: gimana komputer nyari setting 13.000 angka itu tanpa nyoba satu-satu.
 
