@@ -6,11 +6,12 @@ seri Neural Network (Grant Sanderson):
 - Ch. 1 — "But what is a neural network?" (`aircAruvnKk`, 3.361 kata)
 - Ch. 2 — "Gradient descent, how neural networks learn" (`IHZwWFHWa-w`, 3.606 kata)
 
-> Catatan: transkrip di atas ditarik langsung dari YouTube (subtitle manual
-> Inggris) karena folder `transcripts/` di repo ini masuk `.gitignore`, jadi
-> hasil `yt-converter/transcribe.py` belum ikut ter-push. Kalau Shendi
-> mentranskrip video lain, analisis ini tetap berlaku — yang dipelajari
-> adalah *pola kemasannya*, bukan isi satu video.
+> Sumber transkrip (kanonik, hasil `yt-converter/transcribe.py`):
+> [`yt-converter/transcripts/But what is a neural network Deep learning chapter 1 [aircAruvnKk]/`](../yt-converter/transcripts/But%20what%20is%20a%20neural%20network%20Deep%20learning%20chapter%201%20%5BaircAruvnKk%5D/)
+> dan
+> [`yt-converter/transcripts/Gradient descent, how neural networks learn Deep Learning Chapter 2 [IHZwWFHWa-w]/`](../yt-converter/transcripts/Gradient%20descent%2C%20how%20neural%20networks%20learn%20Deep%20Learning%20Chapter%202%20%5BIHZwWFHWa-w%5D/).
+> Kalau ada transkrip video lain ditambahkan, analisis ini tetap berlaku —
+> yang dipelajari adalah *pola kemasannya*, bukan isi satu video.
 
 ## Formula kemasan 3B1B (9 pola)
 
