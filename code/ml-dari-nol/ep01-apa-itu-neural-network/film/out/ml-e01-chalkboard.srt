@@ -1,0 +1,60 @@
+1
+00:00:00,000 --> 00:00:05,940
+Ini angka 3. Corat-coret, resolusi cuma 28 kali 28 pixel — tapi otak lu langsung tahu ini 3.
+
+2
+00:00:06,290 --> 00:00:10,540
+Pixelnya beda-beda tiap tulisan, tapi otak lu tetap bilang: ini 3.
+
+3
+00:00:10,890 --> 00:00:16,890
+Sekarang suruh komputer ngelakuin hal yang sama — baca grid 28 kali 28 pixel, tebak angkanya.
+
+4
+00:00:17,240 --> 00:00:22,920
+Yang tadinya gampang, tiba-tiba jadi susah banget. Nah, di sinilah neural network masuk.
+
+5
+00:00:23,270 --> 00:00:29,790
+Neural network itu bukan otak tiruan. Isinya cuma neuron — tempat nyimpen angka dari nol sampai satu.
+
+6
+00:00:30,140 --> 00:00:36,010
+Gambar tadi punya 784 pixel — jadi layer pertamanya punya 784 neuron, satu buat tiap pixel.
+
+7
+00:00:36,360 --> 00:00:42,040
+Layer terakhir cuma 10 neuron, satu buat tiap angka. Yang paling terang, itu tebakannya.
+
+8
+00:00:42,390 --> 00:00:48,060
+Di tengahnya dua hidden layer, masing-masing 16 neuron. Di sinilah "pikirannya" terjadi.
+
+9
+00:00:48,410 --> 00:00:54,350
+Cara kerjanya: angka di satu layer nentuin angka di layer berikutnya, lewat jumlah berbobot.
+
+10
+00:00:54,700 --> 00:01:01,540
+Tiap sambungan punya weight — angka yang bilang seberapa penting sambungan itu. Plus satu bias per neuron.
+
+11
+00:01:01,890 --> 00:01:08,530
+Totalnya, network sekecil ini punya hampir 13.000 weight dan bias. 13.000 knob yang bisa diputar-putar.
+
+12
+00:01:08,880 --> 00:01:14,500
+"Belajar" artinya: komputer mencari setting ke-13.000 knob itu sampai tebakannya benar.
+
+13
+00:01:14,850 --> 00:01:20,390
+Caranya? Coba-coba, ukur salahnya, perbaiki sedikit-sedikit. Namanya gradient descent.
+
+14
+00:01:20,740 --> 00:01:26,810
+Jadi neural network itu bukan magic. Dia cuma fungsi — fungsi raksasa dengan 13.000 parameter.
+
+15
+00:01:27,160 --> 00:01:32,960
+Besok gua kasih tau: gimana komputer nyari setting 13.000 angka itu tanpa nyoba satu-satu.
+
