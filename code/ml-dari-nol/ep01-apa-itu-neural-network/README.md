@@ -26,6 +26,10 @@ ep01-apa-itu-neural-network/
 
 ## Cara jalan di lokal (setelah film code ada)
 
+**Jalur paling gampang:** extract `./ml-e01-chalkboard.tar.gz` (bundle
+siap-render: film + engine + konsep + naskah VO, 933KB — tanpa
+node_modules), lalu jalankan perintah di bawah dari folder hasil extract.
+
 Semua perintah dari **root repo** (di mana pun lu clone — tidak ada path
 hardcode). Prasyarat (sekali aja): `npm install` di root repo, ffmpeg,
 Chrome.
