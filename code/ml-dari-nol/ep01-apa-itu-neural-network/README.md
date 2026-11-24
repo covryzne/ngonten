@@ -48,6 +48,19 @@ node core/render/video.mjs code/ml-dari-nol/ep01-apa-itu-neural-network/film --f
 ffmpeg -i code/ml-dari-nol/ep01-apa-itu-neural-network/out/ep01-video-only.mp4 -i mix.wav -c:v copy -af loudnorm=I=-14:TP=-1:LRA=11 -c:a aac -b:a 192k -shortest code/ml-dari-nol/ep01-apa-itu-neural-network/out/ep01-final.mp4
 ```
 
+### Tambah VO (kalau MP3 VO sudah ada)
+
+Cek durasi dulu (`ffprobe ... vo.mp3`) — video ini 98,46 dtk, span VO
+estimasi 92,96 dtk.
+
+- **Jalur cepat** (durasi VO ±88–98 dtk): mux langsung, tanpa render
+  ulang — visual mungkin sedikit tidak sinkron:
+  `ffmpeg -i code/ml-dari-nol/ep01-apa-itu-neural-network/out/ep01-video-only.mp4 -i vo.mp3 -c:v copy -af "loudnorm=I=-14:TP=-1:LRA=11,apad" -c:a aac -b:a 192k -shortest code/ml-dari-nol/ep01-apa-itu-neural-network/out/ep01-final.mp4`
+- **Jalur rapi** (durasi VO beda jauh, atau mau sinkron penuh): kirim MP3
+  ke Covryzne → timing asli diukur → `vo_times.json` diupdate → render
+  ulang → mix.wav (VO + musik) → mux. Jangan mux langsung kalau VO lebih
+  panjang dari video (narasi kepotong).
+
 Render lokal adalah jalur utama (GPU laptop aktif, ±1,6 dtk/frame) —
 VM/Colab bukan pilihan untuk render film lemo (sudah dibuktikan: VM ±7 jam,
 Colab GPU tidak bisa dipakai Chrome).
