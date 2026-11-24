@@ -1,7 +1,7 @@
 # E01 — Apa Itu Neural Network?
 
-> Status: DISKUSI — konsep + draft naskah ada di
-> `series/ml-dari-nol/ep01-apa-itu-neural-network/concept.md`.
+> Status: DISKUSI — konsep + draft naskah ada di `./concept.md`
+> (satu folder dengan README ini).
 > Film code BELUM dibuat (menunggu hasil diskusi: judul, scope, style).
 
 ## Rencana
