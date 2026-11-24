@@ -1,5 +1,7 @@
+import argparse
 import json
 import re
+import sys
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
@@ -56,7 +58,7 @@ def sanitize_filename(title: str) -> str:
     return title[:120].rstrip(". ") or "Untitled"
 
 
-def get_video_metadata(video_id: str) -> dict:
+def get_video_metadata(video_id: str, interactive: bool = True) -> dict:
     url = f"https://www.youtube.com/watch?v={video_id}"
 
     options = {
@@ -82,13 +84,20 @@ def get_video_metadata(video_id: str) -> dict:
         }
 
     except Exception:
-        console.print(
-            "[yellow]Metadata unavailable. Enter title manually.[/yellow]"
-        )
+        if interactive:
+            console.print(
+                "[yellow]Metadata unavailable. Enter title manually.[/yellow]"
+            )
+            title = Prompt.ask("Video title", default=video_id)
+        else:
+            console.print(
+                "[yellow]Metadata unavailable. Using video ID as title.[/yellow]"
+            )
+            title = video_id
 
         return {
             "video_id": video_id,
-            "title": Prompt.ask("Video title", default=video_id),
+            "title": title,
             "channel": "Unknown",
             "duration": 0,
             "upload_date": None,
@@ -134,11 +143,12 @@ def format_timestamp(seconds: float) -> str:
     return f"{hours:02}:{minutes:02}:{seconds:02}"
 
 
-def save_transcript(metadata: dict, transcript):
+def save_transcript(metadata: dict, transcript, output_dir: Path | None = None):
+    output_dir = output_dir or OUTPUT_DIR
     title = sanitize_filename(metadata["title"])
     video_id = metadata["video_id"]
 
-    folder = OUTPUT_DIR / f"{title} [{video_id}]"
+    folder = output_dir / f"{title} [{video_id}]"
     folder.mkdir(parents=True, exist_ok=True)
 
     segments = transcript.to_raw_data()
@@ -241,7 +251,61 @@ def display_result(metadata, transcript, folder, words, segments):
         console.print(f"  [green]✓[/green] {file.name}")
 
 
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Extract YouTube transcripts without downloading video"
+    )
+    parser.add_argument(
+        "url",
+        nargs="?",
+        default=None,
+        help="YouTube URL or video ID (omit for interactive mode)",
+    )
+    parser.add_argument(
+        "--lang",
+        default="en,id",
+        help="Preferred languages, comma-separated (default: en,id)",
+    )
+    parser.add_argument(
+        "--out",
+        default=str(OUTPUT_DIR),
+        help="Output directory (default: transcripts)",
+    )
+    return parser.parse_args(argv)
+
+
+def run_once(url: str, languages: list[str], output_dir: Path) -> int:
+    try:
+        video_id = extract_video_id(url)
+        metadata = get_video_metadata(video_id, interactive=False)
+
+        console.print(
+            f"\n[bold green]Video:[/bold green] {metadata['title']}",
+            markup=False
+        )
+
+        transcript = fetch_transcript(video_id, languages)
+        folder, words, segments = save_transcript(
+            metadata, transcript, output_dir
+        )
+        display_result(metadata, transcript, folder, words, segments)
+        return 0
+    except Exception as error:
+        console.print(f"\n[bold red]Error:[/bold red] {error}")
+        return 1
+
+
 def main():
+    args = parse_args()
+
+    if args.url:
+        languages = [
+            lang.strip()
+            for lang in args.lang.split(",")
+            if lang.strip()
+        ] or DEFAULT_LANGUAGES
+        sys.exit(run_once(args.url, languages, Path(args.out)))
+
     console.print(
         Panel.fit(
             "[bold cyan]YouTube Transcriber CLI[/bold cyan]\n"
