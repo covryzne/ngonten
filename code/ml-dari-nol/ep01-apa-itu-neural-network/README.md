@@ -1,13 +1,14 @@
 # E01 — Apa Itu Neural Network?
 
-> Status: DISKUSI — konsep + draft naskah ada di `./concept.md`
-> (satu folder dengan README ini).
-> Film code BELUM dibuat (menunggu hasil diskusi: judul, scope, style).
+> Status: NASKAH FINAL (menunggu dibaca Shendi). Style chalkboard LOCKED.
+> Berikutnya: Shendi generate VO di ElevenLabs (Rocky, v4) → film code
+> dibangun dengan timing VO asli. Konsep + naskah: `./concept.md`,
+> file siap-paste VO: `./script-elevenlabs.txt`.
 
 ## Rencana
 
 - **Serial:** ML dari Nol (3B1B-style, Bahasa Indonesia)
-- **Style:** chalkboard (lemo-opuscar) — rekomendasi; alternatif whiteboard
+- **Style:** chalkboard (lemo-opuscar) — LOCKED 24 Nov 2026
 - **Engine:** lemo-opuscar (pipeline 9 langkah, sudah terbukti di Ep 1 hd-2d)
 - **VO:** Rocky, monolog (±70 dtk, 15 baris — lihat concept.md)
 - **Render:** lokal (laptop Shendi)
